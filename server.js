@@ -9,8 +9,11 @@ const app = express();
 const PORT = process.env.PORT;
 
 const indexRouter = require("./routes/index")
+const authRouter = require("./routes/auth")
 
-app.use("/", indexRouter)
+app.use("/", indexRouter);
+app.use("/", authRouter);
+
 
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
 
