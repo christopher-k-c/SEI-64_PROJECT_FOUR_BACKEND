@@ -1,13 +1,10 @@
-const User = require("../models/User")
+const jwt = require("jsonwebtoken");
+
+const User = require("../models/User");
 
 const bcrypt = require("bcrypt");
 const salt = 10;
 
-// HTTP GET - Sign up route - to load the signup form
-
-exports.auth_signup_get = (req,res) => {
-    res.render("auth/signup");
-}
 
 // POST New User on Signup
 
@@ -19,12 +16,58 @@ exports.auth_signup_post = (req, res) => {
     let hashedPass = bcrypt.hashSync(req.body.password, salt);
     console.log("Password (after hash):", hashedPass);
 
+    user.password = hashedPass;
+
     user.save()
     .then(() => {
-        res.redirect("/auth/login");
+        res.json({"message": "User created successfully!"})
     })
     .catch((err) => {
         console.log(err);
-        res.send("Registration failed; try again later.")
+        res.json({"message": "Registration failed; try again later."})
     })
+}
+
+// POST Existing user login
+
+exports.auth_login_post = async (req, res) => {
+    let {emailAddress, password} = req.body;
+    console.log(emailAddress)
+    try {
+        let user = await User.findOne({emailAddress})
+        console.log(user)
+
+        if (!user) {
+            return res.json({"message": "User not found."}).status(400);
+        }
+
+        console.log(password)
+        console.log(user.password)
+        const isMatch = await bcrypt.compareSync(password, user.password)
+
+        if (!isMatch) {
+            return res.json({"message": "Password does not match."}).status(400);
+        }
+
+        const payload = {
+            user: {
+                id: user._id,
+                name: user.firstName
+            }
+        }
+
+        jwt.sign(
+            payload,
+            process.env.SECRET,
+            {expiresIn: 3600000},
+            (err, token) => {
+                if (err) throw err;
+                res.json({token}).status(200)
+            }
+        )
+    }
+    catch(error) {
+        console.log(error);
+        res.json({"message": "You are not logged in."}).status(400);
+    }
 }
