@@ -14,6 +14,7 @@ const indexRouter = require("./routes/index")
 const productCtrl = require("./routes/product")
 const authRouter = require("./routes/auth")
 
+
 app.use("/", indexRouter);
 app.use("/", productCtrl)
 app.use("/", authRouter);
