@@ -6,4 +6,4 @@ router.use(express.json());
 
 const cartCtrl = require('../controllers/cart');
 
-router.get('/cart/add', cartCtrl.cart_create_get)
+// router.get('/cart/add', cartCtrl.addToCart)
