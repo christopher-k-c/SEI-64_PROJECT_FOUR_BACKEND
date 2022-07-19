@@ -59,7 +59,7 @@ exports.auth_login_post = async (req, res) => {
         jwt.sign(
             payload,
             process.env.SECRET,
-            {expiresIn: 3600000},
+            {expiresIn: "1h"},
             (err, token) => {
                 if (err) throw err;
                 res.json({token}).status(200)
