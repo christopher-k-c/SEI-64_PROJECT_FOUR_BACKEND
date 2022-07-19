@@ -11,21 +11,30 @@ const productSchema = mongoose.Schema({
     // productStock: Number
 
     productName: {
-        type: String
+        type: String,
+        // required: true,
+        maxlength: [100, "Product name exceeds character limit"]
 
     },
     productPrice: {
-        type: Number
+        type: Number,
+        // required: true
 
     },
     productDescription: {
-        type: String
+        type: String,
+        // required: true,
+        maxlength: [500, "Product description exceeds character limit"]
 
     },
     productStock: {
-        type: Number
+        type: Number,
+        // required: true
 
     },
+    productImageUrl: {
+        type: String,
+    }
 
 
     // Still need to set up Order Models relationship 
