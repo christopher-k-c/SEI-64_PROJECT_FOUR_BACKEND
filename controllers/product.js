@@ -1,6 +1,6 @@
 // product_index_get
 
-const Product = require("../models/Product")
+const {Product} = require("../models/Product")
 
 const moment = require('moment')
 
@@ -23,10 +23,8 @@ exports.product_index_post = (req, res) => {
 }
 
 
-// PRODUCT GET - READ
+// PRODUCT GET - READ ALL
 exports.product_index_get = (req, res) => {
-    console.log("hello")
-
     Product.find()
     .then(product => {
 
@@ -35,5 +33,53 @@ exports.product_index_get = (req, res) => {
     .catch((err) => {
         console.log(err);
         res.send("Try again!!!")
+    })
+}
+
+// PRODUCT GET - UPDATE
+/*exports.product_edit_get = (req, res) => {
+    Product.findById(req.query.id)
+    .then((product) => {
+        res.json({product})
+    })
+    .catch( err => {
+        console.log(err)
+    })
+}
+*/
+
+// PRODUCT PUT - UPDATE
+exports.product_update_put = (req, res) => {
+    Product.findByIdAndUpdate(req.body.id, req.body, {new: true})
+    .then(product => {
+    res.json({product})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+
+// PRODUCT DELETE - DELETE
+exports.product_delete_get = (req, res) => {
+    console.log(req.query.id)
+    Product.findByIdAndDelete(req.query.id)
+    .then( (product) => {
+        res.json({product})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
+// PRODUCT GET - READ DETAIL
+exports.product_detail_get = (req, res) => {
+
+    Product.findById(req.query.id)
+    .then(product => {
+        res.json({product})
+    })
+    .catch(err => {
+        console.log(err )
     })
 }

@@ -5,11 +5,6 @@ const mongoose = require('mongoose');
 // Build Product Schema 
 const productSchema = mongoose.Schema({
 
-    // productName: String,
-    // productPrice: Number,
-    // productDescription: String,
-    // productStock: Number
-
     productName: {
         type: String,
         // required: true,
@@ -34,6 +29,7 @@ const productSchema = mongoose.Schema({
     },
     productImageUrl: {
         type: String,
+        maxlength: [500, "Product description exceeds character limit"]
     }
 
 
