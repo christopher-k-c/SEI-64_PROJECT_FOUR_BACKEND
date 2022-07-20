@@ -1,6 +1,6 @@
 // product_index_get
 
-const Product = require("../models/Product")
+const {Product} = require("../models/Product")
 
 const moment = require('moment')
 
