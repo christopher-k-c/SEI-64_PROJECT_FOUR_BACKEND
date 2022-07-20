@@ -25,6 +25,7 @@ exports.product_index_post = (req, res) => {
 
 // PRODUCT GET - READ ALL
 exports.product_index_get = (req, res) => {
+
     Product.find()
     .then(product => {
 
