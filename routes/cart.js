@@ -6,4 +6,8 @@ router.use(express.json());
 
 const cartCtrl = require('../controllers/cart');
 
-router.get('/cart', cartCtrl.addToCart)
+// router.get('/cart', cartCtrl.cart_create_get)
+router.post('/cart', cartCtrl.cart_create_post)
+
+
+module.exports = router;

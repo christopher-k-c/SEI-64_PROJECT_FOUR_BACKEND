@@ -13,11 +13,13 @@ const PORT = process.env.PORT;
 const indexRouter = require("./routes/index")
 const productCtrl = require("./routes/product")
 const authRouter = require("./routes/auth")
+const cartRouter = require("./routes/cart")
 
 
 app.use("/", indexRouter);
 app.use("/", productCtrl)
 app.use("/", authRouter);
+app.use("/", cartRouter);
 
 
 

@@ -3,7 +3,26 @@ const {Product} = require('../models/Product')
 
 const moment = require('moment');
 
-exports.cart_get = 
+
+// exports.cart_create_get = async (req, res) => {
+//     console.log("GET API connecting")
+//     console.log(req.body)
+
+// }
+exports.cart_create_post = (req, res) => {
+    console.log("POST API connecting")
+    console.log(req.body)
+    console.log(req)
+    let cart = new Cart (req.body);
+    cart.save()
+    .then((cart) => {
+        res.json({cart})
+    })
+    .catch((error) => {
+        console.log(error)
+        res.send("cannot confirm cart, try again later")
+    })
+}
 
 
 // const cart = async () => {
