@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const cartSchema = mongoose.Schema({
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     status: {
         type: String,
         lowercase: true,
