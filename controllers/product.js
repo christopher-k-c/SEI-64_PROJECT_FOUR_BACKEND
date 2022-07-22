@@ -38,7 +38,8 @@ exports.product_index_get = (req, res) => {
 }
 
 // PRODUCT GET - UPDATE
-/*exports.product_edit_get = (req, res) => {
+exports.product_edit_get = (req, res) => {
+    console.log("REQ QUERY", req.query)
     Product.findById(req.query.id)
     .then((product) => {
         res.json({product})
@@ -47,11 +48,11 @@ exports.product_index_get = (req, res) => {
         console.log(err)
     })
 }
-*/
 
 // PRODUCT PUT - UPDATE
 exports.product_update_put = (req, res) => {
-    Product.findByIdAndUpdate(req.body.id, req.body, {new: true})
+    console.log("id:", req.body._id, "body:", req.body)
+    Product.findByIdAndUpdate(req.body._id, req.body, {new: true})
     .then(product => {
     res.json({product})
     })
