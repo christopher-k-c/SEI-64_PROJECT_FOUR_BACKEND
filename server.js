@@ -14,12 +14,13 @@ const indexRouter = require("./routes/index")
 const productCtrl = require("./routes/product")
 const authRouter = require("./routes/auth")
 const cartRouter = require("./routes/cart")
-
+const newsLetterRouter = require("./routes/newsletter")
 
 app.use("/", indexRouter);
 app.use("/", productCtrl)
 app.use("/", authRouter);
 app.use("/", cartRouter);
+app.use("/", newsLetterRouter);
 
 
 
