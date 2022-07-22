@@ -7,24 +7,24 @@ const productSchema = mongoose.Schema({
 
     productName: {
         type: String,
-        // required: true,
+        required: true,
         maxlength: [100, "Product name exceeds character limit"]
 
     },
     productPrice: {
         type: Number,
-        // required: true
+        required: true
 
     },
     productDescription: {
         type: String,
-        // required: true,
+        required: true,
         maxlength: [500, "Product description exceeds character limit"]
 
     },
     productStock: {
         type: Number,
-        // required: true
+        required: true
 
     },
     productImageUrl: {

@@ -72,3 +72,16 @@ exports.auth_login_post = async (req, res) => {
         res.json({"message": "You are not logged in."}).status(400);
     }
 }
+
+exports.auth_user_get = (req, res) => {
+    console.log(req.body)
+
+    User.find()
+    .then(user => {
+        res.json({user})
+    })
+    .catch((err) => {
+        console.log(err);
+        res.send("???")
+    })
+}
