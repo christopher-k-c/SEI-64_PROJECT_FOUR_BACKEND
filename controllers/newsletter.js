@@ -7,6 +7,7 @@ const NewsLetter = require("../models/NewsLetter")
 exports.newsletter_add_post = (req, res) => {
     
     let newsletter = new NewsLetter(req.body);
+    console.log(newsletter)
 
     newsletter.save()
     .then((newsletter) => {
