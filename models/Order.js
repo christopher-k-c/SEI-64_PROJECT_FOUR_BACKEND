@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
     orderRef: {
-        type: Number,
+        type: String,
     },
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }],
+    },
     cart: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Cart"

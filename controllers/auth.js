@@ -24,7 +24,7 @@ exports.auth_signup_post = (req, res) => {
     })
     .catch((err) => {
         console.log(err);
-        res.json({"message": "Registration failed; try again later."})
+        res.json({"message": "Failed to register user; try again later."})
     })
 }
 
