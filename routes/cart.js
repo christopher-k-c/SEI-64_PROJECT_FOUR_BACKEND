@@ -8,6 +8,7 @@ const cartCtrl = require('../controllers/cart');
 
 // router.get('/cart', cartCtrl.cart_create_get)
 router.post('/cart', cartCtrl.cart_create_post)
+router.post('/checkout', cartCtrl.order_create_post)
 
 
 module.exports = router;
