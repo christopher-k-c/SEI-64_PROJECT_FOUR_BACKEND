@@ -1,5 +1,6 @@
 const {Cart} = require('../models/Cart')
 const {Product} = require('../models/Product')
+const {Order} = require('../models/Order')
 
 const moment = require('moment');
 
@@ -9,6 +10,8 @@ const moment = require('moment');
 //     console.log(req.body)
 
 // }
+
+// Cart POST: saving cart contents to the database
 exports.cart_create_post = (req, res) => {
     console.log("POST API connecting")
     console.log(req.body)
@@ -24,7 +27,20 @@ exports.cart_create_post = (req, res) => {
     })
 }
 
-
+// Order POST: saving order form contents to the database
+exports.order_create_post = (req, res) => {
+    console.log("order API connecting")
+    console.log(req.body)
+    let order = new Order (req.body);
+    order.save()
+    .then((order) => {
+        res.json({order})
+    })
+    .catch((error) => {
+        console.log(error)
+        res.send("cannot accept order, please try again later")
+    })
+}
 
 
 // const cart = async () => {
