@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = mongoose.Schema({
     orderRef: {
-        type: Number,
+        type: String,
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
