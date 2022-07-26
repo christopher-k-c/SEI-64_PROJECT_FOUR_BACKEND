@@ -83,4 +83,11 @@ const orderSchema = mongoose.Schema({
         lowercase: true,
         default: 'open'
     }
-})
+},
+{
+    timestamps: true
+});
+
+const Order = mongoose.model('Order', orderSchema);
+
+module.exports = {Order};
