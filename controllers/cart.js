@@ -42,6 +42,29 @@ exports.order_create_post = (req, res) => {
     })
 }
 
+// Order GET: fetch all orders in the DB
+exports.order_index_get = (req, res) =>  {
+    Order.find()
+    .then(order => {
+        res.json(order)
+    })
+    .catch((err) => {
+        console.log(err)
+        res.send("Whoops! Couldn't get the orders.")
+    })
+}
+
+// Order GET: fetch order by ID
+exports.order_detail_get = (req, res) => {
+    console.log("Query ID:", req.query.id)
+    Order.findById(req.query.id)
+    .then(order => {
+        res.json(order)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
 
 // const cart = async () => {
 //     const carts = await Cart.find().populate({
