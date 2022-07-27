@@ -66,6 +66,18 @@ exports.order_detail_get = (req, res) => {
     })
 }
 
+// Order PUT: find and update
+exports.order_update_put = (req, res) => {
+    console.log("id:", req.body._id, "body:", req.body)
+    Order.findByIdAndUpdate(req.body._id, req.body, {new: true})
+    .then(product => {
+    res.json({product})
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}
+
 // const cart = async () => {
 //     const carts = await Cart.find().populate({
 //         path: "product",
