@@ -44,8 +44,6 @@ const productSchema = mongoose.Schema({
     }
 
 
-    // Still need to set up Order Models relationship 
-
 },
 {
     timestamps: true // createdAt and updatedAt etc
