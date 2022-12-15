@@ -10,7 +10,7 @@ const { Order } = require("../models/Order");
 exports.product_index_post = (req, res) => {
     
     let product = new Product(req.body);
-    console.log(req.body)
+    console.log(req.body, "req.body")
 
     product.save()
     .then((product) => {
@@ -29,7 +29,7 @@ exports.product_index_get = (req, res) => {
 
     Product.find()
     .then(product => {
-
+        // console.log(res.json({product}), "res.json");
         res.json({product})
     })
     .catch((err) => {
