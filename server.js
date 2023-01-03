@@ -9,7 +9,7 @@ const cors = require("cors")
 const app = express();
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:3000/", "https://mern-app.onrender.com"]
+    origin: ["*"]
 }))
 
 
@@ -26,6 +26,7 @@ app.use("/", productCtrl)
 app.use("/", authRouter);
 app.use("/", cartRouter);
 app.use("/", newsLetterRouter);
+
 
 
 
